@@ -1,18 +1,16 @@
 ﻿@model BusinessObject.Product
 
 @using System.Security.Claims
+@using System.Globalization
 
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
 
     var claim = User.Claims.SingleOrDefault(c => c.Type.Equals(ClaimTypes.Name));
     var role = "User";
-    if (claim != null)
+    if (claim is {Value: "Admin" })
     {
-        if (claim.Value.Equals("Admin"))
-        {
-            role = "Admin";
-        }
+        role = "Admin";
     }
 
     if (role.Equals("Admin"))

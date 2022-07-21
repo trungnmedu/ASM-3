@@ -56,6 +56,10 @@ else
                     <input type="submit" value="Edit" class="btn btn-primary" />
                 </div>
             </form>
+            <script type="text/javascript">
+                const unitPriceElement = document.getElementById("UnitPrice");
+                unitPriceElement.value = unitPriceElement.value.toString().replace(",", ".");
+            </script>
         </div>
     </div>
 

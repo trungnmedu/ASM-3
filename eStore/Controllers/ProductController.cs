@@ -48,9 +48,7 @@ namespace eStore.Controllers
                 {
                     if (from > to)
                     {
-                        decimal? temp = from;
-                        from = to;
-                        to = temp;
+                        (from, to) = (to, from);
                     }
                     products = productRepository.SearchProduct(from.Value, to.Value, products);
                 }
@@ -60,7 +58,6 @@ namespace eStore.Controllers
                 }
 
                 int pageSize = 10;
-
                 return View(await PaginatedList<Product>.CreateAsync(products.AsQueryable(), page ?? 1, pageSize));
             } catch (Exception ex)
             {
@@ -234,7 +231,5 @@ namespace eStore.Controllers
                 return View();
             }
         }
-
-        
     }
 }
